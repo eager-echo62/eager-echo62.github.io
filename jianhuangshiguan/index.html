@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鉴黄师官方入口-鉴黄师官网入口_鉴黄师举报入口</title>
+<meta name="description" content="鉴黄师官方入口页面，汇总鉴黄师官方入口的访问方式、举报提交通道与审核工作说明，帮助你了解鉴黄师官方入口的定位与使用路径。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M32 12l16 7v13c0 11-7 18-16 21-9-3-16-10-16-21V19z' fill='none' stroke='%2338bdf8' stroke-width='3'/%3E%3Cpath d='M24 32l6 6 11-12' fill='none' stroke='%2322c55e' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0f172a;
+  --ink-2:#1e293b;
+  --muted:#5b6b82;
+  --line:#e2e8f0;
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --brand:#1d4ed8;
+  --brand-2:#38bdf8;
+  --ok:#15803d;
+  --warn:#b45309;
+  --radius:16px;
+  --max:1120px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block;}
+a{color:var(--brand);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px;}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;gap:18px;
+  min-height:66px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-weight:700;font-size:17px;color:var(--ink);
+  letter-spacing:.2px;white-space:nowrap;
+}
+.logo:hover{text-decoration:none;}
+.logo-mark{
+  width:34px;height:34px;flex:0 0 34px;
+  border-radius:9px;
+  background:linear-gradient(145deg,#1d4ed8,#0f172a);
+  display:grid;place-items:center;
+}
+.logo-mark svg{width:20px;height:20px;}
+nav.main-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+nav.main-nav a{
+  color:var(--ink-2);font-size:15px;
+  padding:7px 12px;border-radius:9px;
+}
+nav.main-nav a:hover{background:#eef2ff;text-decoration:none;color:var(--brand);}
+.nav-cta{
+  background:var(--brand)!important;color:#fff!important;
+  font-weight:600;
+}
+.nav-cta:hover{background:#1e40af!important;}
+
+/* Hero */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 380px at 88% -12%,rgba(56,189,248,.22),transparent 62%),
+    radial-gradient(700px 340px at 4% 0%,rgba(29,78,216,.16),transparent 60%),
+    #0b1220;
+  color:#e7edf7;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:44px;align-items:center;
+  padding:58px 0 62px;
+}
+.hero h1{
+  font-size:clamp(27px,3.5vw,40px);
+  line-height:1.25;
+  margin:0 0 16px;
+  letter-spacing:.5px;
+  font-weight:800;
+  color:#fff;
+}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:2px;
+  color:#7dd3fc;
+  border:1px solid rgba(125,211,252,.4);
+  border-radius:999px;
+  padding:4px 14px;margin-bottom:18px;
+}
+.hero p.lead{
+  margin:0 0 26px;color:#b9c6da;font-size:16px;max-width:52ch;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:11px;
+  font-size:15px;font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:.18s;
+}
+.btn-primary{background:var(--brand);color:#fff;}
+.btn-primary:hover{background:#1e40af;text-decoration:none;}
+.btn-ghost{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.24);
+  color:#e7edf7;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.14);text-decoration:none;}
+.btn[aria-disabled="true"]{
+  pointer-events:none;
+  opacity:.72;
+  cursor:default;
+}
+.hero-facts{
+  display:flex;gap:26px;flex-wrap:wrap;
+  margin-top:30px;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.hero-facts div{font-size:13px;color:#8fa3bd;}
+.hero-facts strong{display:block;font-size:20px;color:#fff;font-weight:700;letter-spacing:.5px;}
+
+.hero-visual{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:20px;
+  padding:22px;
+}
+.hero-visual h2{
+  font-size:14px;margin:0 0 14px;color:#9fb6d4;font-weight:600;letter-spacing:1px;
+}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.flow li{
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:11px 13px;
+}
+.flow .num{
+  flex:0 0 24px;height:24px;border-radius:7px;
+  display:grid;place-items:center;
+  background:rgba(56,189,248,.18);
+  color:#7dd3fc;font-size:12px;font-weight:700;
+}
+.flow .txt{font-size:13.5px;color:#c3d0e2;line-height:1.6;}
+.flow .txt b{color:#fff;display:block;font-size:14px;margin-bottom:2px;}
+
+/* Sections */
+section{padding:56px 0;}
+.section-head{margin-bottom:28px;max-width:70ch;}
+.section-head .eyebrow{
+  font-size:13px;color:var(--brand);font-weight:700;letter-spacing:2px;
+  display:block;margin-bottom:8px;
+}
+.section-head h2{
+  font-size:clamp(21px,2.4vw,27px);
+  margin:0 0 10px;line-height:1.35;color:var(--ink);
+  font-weight:800;
+}
+.section-head p{margin:0;color:var(--muted);font-size:15.5px;}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.card .ico{
+  width:40px;height:40px;border-radius:11px;
+  background:#eef2ff;display:grid;place-items:center;color:var(--brand);
+}
+.card h3{margin:0;font-size:17px;font-weight:700;color:var(--ink-2);}
+.card p{margin:0;font-size:14.5px;color:var(--muted);}
+.card .tag{
+  margin-top:auto;font-size:12.5px;color:var(--brand);
+  font-weight:600;
+}
+
+/* split content */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;
+}
+.prose p{margin:0 0 16px;font-size:15.5px;color:#33415c;}
+.prose h3{font-size:18px;margin:26px 0 10px;color:var(--ink-2);}
+.prose h3:first-child{margin-top:0;}
+.note{
+  background:#fff7ed;border:1px solid #fed7aa;
+  border-left:4px solid var(--warn);
+  border-radius:10px;padding:14px 16px;
+  font-size:14px;color:#7c4a03;
+  margin:18px 0 0;
+}
+.panel{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;
+}
+.panel h3{margin:0 0 14px;font-size:17px;}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.checklist li{display:flex;gap:10px;font-size:14.5px;color:#33415c;line-height:1.65;}
+.checklist li svg{flex:0 0 18px;margin-top:3px;color:var(--ok);}
+
+/* steps */
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  counter-reset:step;
+}
+.step{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;
+  position:relative;
+}
+.step .s-num{
+  font-size:13px;font-weight:700;color:var(--brand);
+  letter-spacing:1px;margin-bottom:10px;display:block;
+}
+.step h3{margin:0 0 8px;font-size:15.5px;color:var(--ink-2);}
+.step p{margin:0;font-size:14px;color:var(--muted);}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:900px;}
+details{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:0 18px;
+}
+details[open]{border-color:#c7d2fe;}
+summary{
+  cursor:pointer;list-style:none;
+  padding:16px 0;font-weight:600;font-size:15.5px;color:var(--ink-2);
+  display:flex;justify-content:space-between;gap:14px;align-items:center;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";color:var(--brand);font-size:19px;font-weight:400;line-height:1;}
+details[open] summary::after{content:"–";}
+details .body{
+  padding:0 0 16px;font-size:14.5px;color:var(--muted);
+}
+
+/* CTA band */
+.cta-band{
+  background:linear-gradient(120deg,#0b1220,#152a4d);
+  border-radius:20px;
+  padding:34px 30px;
+  color:#e7edf7;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.cta-band h2{margin:0 0 6px;font-size:21px;color:#fff;}
+.cta-band p{margin:0;font-size:14.5px;color:#a9b9d0;}
+
+/* Footer */
+footer{
+  background:#0b1220;color:#8fa3bd;
+  padding:38px 0 30px;margin-top:20px;
+  font-size:13.5px;
+}
+.footer-inner{
+  display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding-bottom:22px;margin-bottom:18px;
+}
+.footer-brand{color:#e7edf7;font-weight:700;font-size:15px;}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+.footer-links a{color:#9fb6d4;}
+.footer-links a:hover{color:#fff;}
+.footer-note{font-size:12.5px;color:#6b7f99;line-height:1.8;}
+
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:44px 0 48px;}
+  .cards{grid-template-columns:1fr 1fr;}
+  .split{grid-template-columns:1fr;gap:26px;}
+  .steps{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:640px){
+  body{font-size:15.5px;}
+  .header-inner{min-height:58px;gap:12px;}
+  .logo{font-size:15px;}
+  nav.main-nav{display:none;}
+  .hero h1{font-size:26px;}
+  .hero p.lead{font-size:15px;}
+  .hero-facts{gap:18px;}
+  .hero-facts strong{font-size:18px;}
+  .cards{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+  section{padding:42px 0;}
+  .cta-band{padding:26px 20px;}
+  .cta-band h2{font-size:19px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="鉴黄师官方入口 首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span>鉴黄师官方入口</span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <a href="#access">访问方式</a>
+      <a href="#report">举报提交通道</a>
+      <a href="#work">审核流程</a>
+      <a href="#faq">常见问题</a>
+      <a class="nav-cta" href="#access">进入入口</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="kicker">官方入口 · 内容安全</span>
+        <h1>鉴黄师官方入口</h1>
+        <p class="lead">鉴黄师官方入口是内容安全审核相关服务的统一入口页。这里说明鉴黄师官方入口的定位、访问方式与举报提交通道，帮助访问者快速判断自己该走哪条路径，而不是在多个页面之间反复试探。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#access">查看访问方式</a>
+          <a class="btn btn-ghost" href="#report">前往举报提交通道</a>
+        </div>
+        <div class="hero-facts">
+          <div><strong>3 类</strong>常见访问路径</div>
+          <div><strong>1 条</strong>举报提交通道</div>
+          <div><strong>7×24</strong>内容安全值守</div>
+        </div>
+      </div>
+      <aside class="hero-visual" aria-label="入口使用路径">
+        <h2>入口使用路径</h2>
+        <ul class="flow">
+          <li>
+            <span class="num">01</span>
+            <span class="txt"><b>确认身份</b>区分普通访问者、内容从业者与举报提交人。</span>
+          </li>
+          <li>
+            <span class="num">02</span>
+            <span class="txt"><b>选择通道</b>按用途进入鉴黄师官方入口对应页面。</span>
+          </li>
+          <li>
+            <span class="num">03</span>
+            <span class="txt"><b>提交内容</b>填写必要信息，保留可核验的描述。</span>
+          </li>
+          <li>
+            <span class="num">04</span>
+            <span class="txt"><b>等待反馈</b>留意受理编号与后续通知。</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 访问方式 -->
+  <section id="access">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">访问方式</span>
+        <h2>鉴黄师官方入口的三种常见访问路径</h2>
+        <p>访问鉴黄师官方入口的需求并不相同，先把目的分清，再选通道，能少走很多弯路。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          </span>
+          <h3>了解服务定位</h3>
+          <p>首次访问鉴黄师官方入口，通常想弄清它提供什么、面向谁、是否需要注册。建议先读完本页说明再进入具体通道。</p>
+          <span class="tag">适合初次访问</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></svg>
+          </span>
+          <h3>内容从业者接入</h3>
+          <p>平台或团队需要内容安全审核协作时，通过鉴黄师官方入口了解接入方式与协作范围，避免使用非官方渠道。</p>
+          <span class="tag">适合机构与团队</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H7l-3 3z"/></svg>
+          </span>
+          <h3>举报违规内容</h3>
+          <p>发现疑似违规内容时，走鉴黄师官方入口的举报提交通道，比在社交平台转发更有效，也更容易被受理。</p>
+          <span class="tag">适合普通用户</span>
+        </article>
+      </div>
+      <div class="panel" style="margin-top:22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+        <div>
+          <h3 style="margin-bottom:4px;">入口页面下载</h3>
+          <p style="margin:0;font-size:14px;color:var(--muted);">入口说明页提供下载版本，方便离线查阅与内部传阅。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 举报通道 + 说明 -->
+  <section id="report" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap split">
+      <div class="prose">
+        <h3>举报提交通道做什么</h3>
+        <p>鉴黄师官方入口的举报提交通道只接收与内容安全相关的线索。提交时请写清平台名称、内容位置、发现时间与问题类型，并尽量保留截图或链接等可核验信息。描述越具体，受理与核查越快。</p>
+        <h3>提交前请先自检</h3>
+        <p>同一线索无需重复提交。若内容已被平台处理，可在原提交记录中补充说明，而不是新开一条记录。涉及个人隐私的信息请谨慎填写，仅提供核查所必需的部分。</p>
+        <h3>关于处理时效</h3>
+        <p>线索进入鉴黄师官方入口后会先做初步判断，再按类型分流。受理进度以提交后返回的编号为准，请妥善保存。不同内容的核查复杂度不同，等待时间也会有差异。</p>
+        <div class="note">提示：请通过本页公布的鉴黄师官方入口进入，不要轻信搜索结果中来源不明的仿冒页面，也不要向任何第三方提供账号密码。</div>
+      </div>
+      <aside class="panel" aria-label="提交清单">
+        <h3>举报提交清单</h3>
+        <ul class="checklist">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>平台名称与具体页面位置</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>问题类型与简要描述</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>截图或链接等可核验材料</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>可用的联系邮箱（用于接收反馈）</span>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="#access" style="margin-top:18px;">返回入口选择</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 审核流程 -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">审核流程</span>
+        <h2>从鉴黄师官方入口提交之后会发生什么</h2>
+        <p>了解流程有助于判断自己的提交卡在哪一步，也方便补充材料。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="s-num">STEP 01</span>
+          <h3>接收与登记</h3>
+          <p>鉴黄师官方入口对提交内容做登记，生成受理编号。</p>
+        </div>
+        <div class="step">
+          <span class="s-num">STEP 02</span>
+          <h3>初步判断</h3>
+          <p>核对描述与材料是否完整，判断是否属于受理范围。</p>
+        </div>
+        <div class="step">
+          <span class="s-num">STEP 03</span>
+          <h3>分类核查</h3>
+          <p>按内容类型分流核查，必要时补充询问细节。</p>
+        </div>
+        <div class="step">
+          <span class="s-num">STEP 04</span>
+          <h3>反馈结果</h3>
+          <p>通过提交时留下的联系方式告知处理结论。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:#fff;border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">常见问题</span>
+        <h2>关于鉴黄师官方入口的高频疑问</h2>
+        <p>以下回答只针对本页说明的范围，具体以入口页面实际提示为准。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>鉴黄师官方入口需要注册吗？</summary>
+          <div class="body">是否需要注册取决于你要使用的通道。浏览说明页面无需注册；提交举报线索时，通常需要留下可用的联系方式以便反馈结果。</div>
+        </details>
+        <details>
+          <summary>提交后多久能收到回复？</summary>
+          <div class="body">受理时间与线索复杂度相关，页面不承诺固定时长。请以提交后返回的受理编号为准，按编号查询或等待通知。</div>
+        </details>
+        <details>
+          <summary>可以在多个渠道重复提交同一线索吗？</summary>
+          <div class="body">不建议。重复提交会增加核查负担，也可能导致记录分散。走鉴黄师官方入口提交一次，后续在原记录中补充即可。</div>
+        </details>
+        <details>
+          <summary>如何确认自己访问的是真的鉴黄师官方入口？</summary>
+          <div class="body">请以本页公布的链接为起点，核对域名与页面标识。来源不明的短链、跳转页和索取账号密码的页面都应提高警惕。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>从鉴黄师官方入口开始</h2>
+          <p>先确认访问目的，再选择对应通道，提交内容尽量具体、可核验。</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#access">进入入口</a>
+          <a class="btn btn-ghost" href="#report">提交线索</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">鉴黄师官方入口</div>
+      <div class="footer-links">
+        <a href="#access">访问方式</a>
+        <a href="#report">举报提交通道</a>
+        <a href="#work">审核流程</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <p class="footer-note">本页为鉴黄师官方入口的说明页面，内容围绕入口访问、举报提交与审核流程展开。请通过本页公布的鉴黄师官方入口访问，谨防仿冒页面。页面信息以实际入口提示为准。</p>
+  </div>
+</footer>
+
+</body>
+</html>
