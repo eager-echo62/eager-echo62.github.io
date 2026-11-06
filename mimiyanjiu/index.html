@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秘密研究所-秘密研究所网站_神秘学研究与未解档案</title>
+<meta name="description" content="秘密研究所是一个围绕神秘现象、未解档案与冷门知识的研究型站点，提供主题档案、研究笔记与观察记录，帮助读者系统了解秘密研究所关注的研究方向与内容脉络。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ccircle cx='32' cy='28' r='12' fill='none' stroke='%235eead4' stroke-width='3'/%3E%3Cpath d='M24 44h16l4 10H20z' fill='%235eead4'/%3E%3Ccircle cx='32' cy='28' r='4' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#080d16;
+    --bg2:#0d1524;
+    --panel:#111c2e;
+    --line:rgba(94,234,212,.16);
+    --line2:rgba(255,255,255,.08);
+    --text:#e6edf5;
+    --muted:#8ea0b8;
+    --teal:#5eead4;
+    --gold:#ffd166;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(900px 500px at 80% -10%,rgba(94,234,212,.10),transparent 60%),
+      radial-gradient(700px 400px at 5% 10%,rgba(255,209,102,.07),transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  /* header */
+  header{
+    position:sticky;top:0;z-index:30;
+    background:rgba(8,13,22,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line2);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.5px;font-size:17px;white-space:nowrap}
+  .brand svg{width:30px;height:30px;flex:none}
+  .nav-links{display:flex;gap:26px;font-size:14.5px;color:var(--muted)}
+  .nav-links a{position:relative;padding:4px 0;transition:color .2s}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--teal);transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    font-size:14px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;
+    color:var(--teal);white-space:nowrap;transition:.2s;
+  }
+  .nav-cta:hover{background:rgba(94,234,212,.1)}
+  /* hero */
+  .hero{padding:74px 0 56px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:2px;
+    color:var(--gold);border:1px solid rgba(255,209,102,.3);border-radius:999px;
+    padding:5px 14px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  h1{
+    font-size:clamp(34px,5.2vw,54px);
+    line-height:1.15;letter-spacing:1px;font-weight:800;
+    background:linear-gradient(100deg,#ffffff 20%,var(--teal) 70%,#9df6e8 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{margin-top:20px;color:var(--muted);font-size:16.5px;max-width:34em}
+  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;
+    font-size:15px;font-weight:600;transition:.22s;border:1px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(120deg,#3fd6c0,#5eead4);color:#06231f}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(94,234,212,.25)}
+  .btn-ghost{border-color:var(--line2);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+  .hero-visual{position:relative;display:flex;justify-content:center}
+  .hero-visual svg{width:100%;max-width:360px;height:auto;filter:drop-shadow(0 18px 40px rgba(94,234,212,.12))}
+  .hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+  .stat b{display:block;font-size:24px;color:var(--teal);letter-spacing:.5px}
+  .stat span{font-size:13px;color:var(--muted)}
+  /* section */
+  section{padding:60px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(22px,3vw,28px);letter-spacing:.5px;font-weight:700}
+  .sec-head h2 em{font-style:normal;color:var(--teal)}
+  .sec-head p{color:var(--muted);font-size:14.5px;max-width:36em}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line2) 20%,var(--line2) 80%,transparent)}
+  /* archive cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border:1px solid var(--line2);border-radius:var(--radius);
+    padding:26px 24px;transition:.25s;position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--teal),transparent);opacity:.55}
+  .card:hover{transform:translateY(-4px);border-color:var(--line);box-shadow:0 16px 36px rgba(0,0,0,.35)}
+  .card .ico{width:40px;height:40px;margin-bottom:16px;color:var(--teal)}
+  .card .tag{font-size:12px;color:var(--gold);letter-spacing:1.5px}
+  .card h3{font-size:18px;margin:6px 0 10px;font-weight:700}
+  .card p{font-size:14.5px;color:var(--muted)}
+  /* notes list */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  .notes{list-style:none;display:flex;flex-direction:column}
+  .note{
+    display:grid;grid-template-columns:56px 1fr;gap:18px;padding:20px 0;
+    border-bottom:1px dashed var(--line2);
+  }
+  .note:last-child{border-bottom:none}
+  .note .num{font-size:13px;color:var(--teal);letter-spacing:1px;padding-top:3px;font-variant-numeric:tabular-nums}
+  .note h3{font-size:16.5px;font-weight:650;margin-bottom:6px}
+  .note p{font-size:14px;color:var(--muted)}
+  .panel{
+    background:linear-gradient(180deg,rgba(17,28,46,.9),rgba(13,21,36,.9));
+    border:1px solid var(--line2);border-radius:var(--radius);padding:28px;
+  }
+  .panel h3{font-size:17px;margin-bottom:6px}
+  .panel .sub{font-size:13px;color:var(--muted);margin-bottom:22px}
+  .meter{margin-bottom:20px}
+  .meter .row{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px;color:var(--muted)}
+  .meter .row b{color:var(--text);font-weight:600}
+  .bar{height:6px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#3fd6c0,#5eead4)}
+  .panel .foot{font-size:13px;color:var(--muted);border-top:1px solid var(--line2);padding-top:16px;margin-top:6px}
+  /* search */
+  .tool{
+    display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:26px;
+  }
+  .tool input{
+    flex:1 1 280px;min-width:0;background:var(--bg2);border:1px solid var(--line2);
+    color:var(--text);padding:12px 16px;border-radius:10px;font-size:14.5px;outline:none;
+    font-family:inherit;transition:.2s;
+  }
+  .tool input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(94,234,212,.12)}
+  .tool input::placeholder{color:#5d6c82}
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{
+    font-size:13px;padding:6px 14px;border-radius:999px;border:1px solid var(--line2);
+    color:var(--muted);cursor:pointer;background:transparent;font-family:inherit;transition:.2s;
+  }
+  .chip:hover,.chip.active{border-color:var(--teal);color:var(--teal);background:rgba(94,234,212,.08)}
+  .results{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .item{
+    border:1px solid var(--line2);border-radius:12px;padding:18px 20px;background:rgba(17,28,46,.6);
+    transition:.2s;
+  }
+  .item:hover{border-color:var(--line)}
+  .item h4{font-size:15.5px;margin-bottom:6px;font-weight:650}
+  .item p{font-size:13.5px;color:var(--muted)}
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:26px 0}
+  /* down */
+  .down{
+    display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+    border:1px solid var(--line);border-radius:var(--radius);padding:32px 34px;
+    background:
+      radial-gradient(420px 200px at 90% 0%,rgba(94,234,212,.12),transparent 70%),
+      linear-gradient(180deg,var(--panel),var(--bg2));
+  }
+  .down h3{font-size:20px;margin-bottom:8px}
+  .down p{font-size:14.5px;color:var(--muted);max-width:40em}
+  .down .meta{font-size:12.5px;color:#5d6c82;margin-top:12px;letter-spacing:.5px}
+  .btn[aria-disabled="true"]{opacity:.9}
+  /* footer */
+  footer{border-top:1px solid var(--line2);padding:46px 0 30px;margin-top:20px;background:rgba(8,13,22,.6)}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+  .f-grid h4{font-size:14px;margin-bottom:14px;color:var(--text);letter-spacing:.5px}
+  .f-grid p,.f-grid a{font-size:13.5px;color:var(--muted);display:block;margin-bottom:8px}
+  .f-grid a:hover{color:var(--teal)}
+  .f-brand{display:flex;align-items:center;gap:9px;font-weight:700;margin-bottom:12px}
+  .f-brand svg{width:24px;height:24px}
+  .copy{margin-top:34px;padding-top:20px;border-top:1px solid var(--line2);
+    font-size:12.5px;color:#5d6c82;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  /* responsive */
+  @media(max-width:900px){
+    .hero-grid,.split{grid-template-columns:1fr;gap:36px}
+    .hero{padding:52px 0 40px}
+    .hero-visual{order:-1;max-width:260px;margin:0 auto}
+    .cards{grid-template-columns:1fr 1fr}
+    .results{grid-template-columns:1fr}
+    .down{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .nav-links{display:none}
+    .nav{height:60px}
+    .cards{grid-template-columns:1fr}
+    .hero-stats{gap:22px}
+    .f-grid{grid-template-columns:1fr}
+    section{padding:44px 0}
+    .down{padding:24px}
+    .brand{font-size:15.5px}
+    .brand svg{width:26px;height:26px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="秘密研究所 首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="27" r="13" fill="none" stroke="#5eead4" stroke-width="3"/>
+        <path d="M23 45h18l4.5 11h-27z" fill="#5eead4" opacity=".85"/>
+        <circle cx="32" cy="27" r="4.5" fill="#ffd166"/>
+      </svg>
+      秘密研究所
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#archive">研究档案</a>
+      <a href="#notes">观察笔记</a>
+      <a href="#explore">档案检索</a>
+      <a href="#download">资料下载</a>
+    </nav>
+    <a class="nav-cta" href="#explore">进入档案库</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">MYSTERY ARCHIVE · 第 04 期</span>
+        <h1>秘密研究所</h1>
+        <p class="lead">
+          秘密研究所是一个以神秘现象、未解档案与冷门知识为主题的研究型站点。我们把散落在传闻里的线索重新归档，用可追溯的记录、分层的笔记与清晰的条目，呈现每一份档案的来龙去脉。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#archive">浏览研究档案</a>
+          <a class="btn btn-ghost" href="#notes">阅读观察笔记</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>128</b><span>已归档条目</span></div>
+          <div class="stat"><b>9</b><span>研究主题分类</span></div>
+          <div class="stat"><b>每周</b><span>笔记更新节奏</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5eead4" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#5eead4" stop-opacity=".15"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffd166" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#ffd166" stop-opacity=".2"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="150" r="112" fill="none" stroke="url(#g1)" stroke-width="1.2"/>
+          <circle cx="160" cy="150" r="86" fill="none" stroke="url(#g1)" stroke-width="1" stroke-dasharray="4 8"/>
+          <circle cx="160" cy="150" r="60" fill="none" stroke="rgba(94,234,212,.35)" stroke-width="1"/>
+          <rect x="126" y="112" width="68" height="76" rx="10" fill="none" stroke="url(#g2)" stroke-width="2.4"/>
+          <path d="M142 112v-14a18 18 0 0 1 36 0v14" fill="none" stroke="url(#g2)" stroke-width="2.4"/>
+          <circle cx="160" cy="146" r="9" fill="#5eead4"/>
+          <rect x="156" y="152" width="8" height="20" rx="4" fill="#5eead4"/>
+          <circle cx="160" cy="150" r="112" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <circle cx="248" cy="86" r="3.5" fill="#5eead4"/>
+          <circle cx="76" cy="214" r="3" fill="#ffd166"/>
+          <circle cx="220" cy="238" r="2.5" fill="#5eead4" opacity=".7"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ARCHIVE -->
+  <section id="archive">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>研究<em>档案</em></h2>
+          <p>秘密研究所按主题把条目分为三组常设档案，每份档案含背景梳理、线索记录与当前结论，方便读者按兴趣深入。</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/>
+          </svg>
+          <span class="tag">ARCHIVE 01</span>
+          <h3>自然与地理异闻</h3>
+          <p>记录难以解释的地貌、天象与生物目击，标注时间、地点与目击者描述，避免把传闻当作定论。</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M5 4h11l3 3v13H5z"/><path d="M8 9h8M8 13h8M8 17h5"/>
+          </svg>
+          <span class="tag">ARCHIVE 02</span>
+          <h3>历史与文献疑点</h3>
+          <p>整理旧报刊、手稿与地方志中相互矛盾的记载，比较不同版本，呈现证据链中的空白与分歧。</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="4" y="6" width="16" height="12" rx="2"/><path d="M9 12h6M12 9v6"/>
+          </svg>
+          <span class="tag">ARCHIVE 03</span>
+          <h3>技术与人造谜题</h3>
+          <p>关注加密信息、匿名广播与工程遗迹，聚焦可复现的线索，讨论这些谜题背后的设计思路。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section id="notes">
+    <div class="wrap split">
+      <div>
+        <div class="sec-head" style="margin-bottom:18px">
+          <div>
+            <h2>观察<em>笔记</em></h2>
+            <p>每篇笔记只回答一个小问题，来自秘密研究所的日常整理与交叉比对。</p>
+          </div>
+        </div>
+        <ul class="notes">
+          <li class="note">
+            <div class="num">N-01</div>
+            <div>
+              <h3>同一事件为何出现多个版本</h3>
+              <p>以三份早期报道为例，比较叙述顺序与细节差异，说明口述材料在传播中的漂移方式。</p>
+            </div>
+          </li>
+          <li class="note">
+            <div class="num">N-02</div>
+            <div>
+              <h3>如何判断一条线索是否值得跟进</h3>
+              <p>列出一套简单的筛选标准：可定位的时间、可核对的出处、可重复的观察点，三者缺一即降级处理。</p>
+            </div>
+          </li>
+          <li class="note">
+            <div class="num">N-03</div>
+            <div>
+              <h3>地图上的空白区域意味着什么</h3>
+              <p>空白未必代表无人知晓，更常见的原因是资料未公开或制图标准不同，笔记中给出两种对照案例。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <aside class="panel">
+        <h3>本期整理进度</h3>
+        <p class="sub">以下为秘密研究所当前档案的整理状态，随新增条目更新。</p>
+        <div class="meter">
+          <div class="row"><span>来源核对</span><b>82%</b></div>
+          <div class="bar"><i style="width:82%"></i></div>
+        </div>
+        <div class="meter">
+          <div class="row"><span>时间线补全</span><b>64%</b></div>
+          <div class="bar"><i style="width:64%"></i></div>
+        </div>
+        <div class="meter">
+          <div class="row"><span>版本比对</span><b>71%</b></div>
+          <div class="bar"><i style="width:71%"></i></div>
+        </div>
+        <div class="meter">
+          <div class="row"><span>条目索引</span><b>93%</b></div>
+          <div class="bar"><i style="width:93%"></i></div>
+        </div>
+        <p class="foot">整理进度反映内部工作状态，不代表任何结论的确定程度。</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section id="explore">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>档案<em>检索</em></h2>
+          <p>输入关键词或选择分类，快速定位秘密研究所已公开的条目。</p>
+        </div>
+      </div>
+      <div class="tool">
+        <input id="q" type="search" placeholder="输入关键词，如：地图、目击、加密" aria-label="检索档案条目">
+        <div class="chips" id="chips">
+          <button class="chip active" data-cat="全部">全部</button>
+          <button class="chip" data-cat="自然">自然地理</button>
+          <button class="chip" data-cat="历史">历史文献</button>
+          <button class="chip" data-cat="技术">技术谜题</button>
+        </div>
+      </div>
+      <div class="results" id="results">
+        <article class="item" data-cat="自然" data-key="地图 地貌 空白">
+          <h4>地图上的未标注区域</h4>
+          <p>自然地理 · 记录一处制图标准变化导致的区域空白，附时间与图源对照。</p>
+        </article>
+        <article class="item" data-cat="自然" data-key="目击 天象 描述">
+          <h4>夜间天象目击记录</h4>
+          <p>自然地理 · 汇总多位目击者的描述差异，标注观测时间与方位。</p>
+        </article>
+        <article class="item" data-cat="历史" data-key="手稿 版本 矛盾">
+          <h4>两份互相矛盾的地方志</h4>
+          <p>历史文献 · 比较同一事件的两种记载，列出可核对的出处与年份。</p>
+        </article>
+        <article class="item" data-cat="历史" data-key="旧报 报道 叙述">
+          <h4>旧报刊中的叙述顺序</h4>
+          <p>历史文献 · 分析三份早期报道的细节取舍，说明版本漂移的过程。</p>
+        </article>
+        <article class="item" data-cat="技术" data-key="加密 信息 广播">
+          <h4>匿名广播的加密段落</h4>
+          <p>技术谜题 · 拆解一段可复现的加密信息，讨论其设计思路。</p>
+        </article>
+        <article class="item" data-cat="技术" data-key="遗迹 工程 结构">
+          <h4>山体工程遗迹的结构</h4>
+          <p>技术谜题 · 依据可观察的结构特征，推测建造顺序与用途。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download">
+    <div class="wrap">
+      <div class="down">
+        <div>
+          <h3>秘密研究所 · 档案索引手册</h3>
+          <p>包含全部已公开条目的分类索引、时间线速查与笔记编号对照，适合打印或离线查阅。内容与站点同步更新，以当前版本为准。</p>
+          <p class="meta">PDF · 索引手册 · 随站点更新</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="27" r="13" fill="none" stroke="#5eead4" stroke-width="3"/>
+            <path d="M23 45h18l4.5 11h-27z" fill="#5eead4" opacity=".85"/>
+            <circle cx="32" cy="27" r="4.5" fill="#ffd166"/>
+          </svg>
+          秘密研究所
+        </div>
+        <p>围绕神秘现象与未解档案的研究型站点，以可追溯的记录呈现主题内容。</p>
+      </div>
+      <div>
+        <h4>站内栏目</h4>
+        <a href="#archive">研究档案</a>
+        <a href="#notes">观察笔记</a>
+        <a href="#explore">档案检索</a>
+        <a href="#download">资料下载</a>
+      </div>
+      <div>
+        <h4>档案分类</h4>
+        <a href="#explore">自然与地理异闻</a>
+        <a href="#explore">历史与文献疑点</a>
+        <a href="#explore">技术与人造谜题</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 秘密研究所 · 内容仅作主题研究记录</span>
+      <span>条目结论以正文所列出处为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var chips = document.querySelectorAll('#chips .chip');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#results .item'));
+  var results = document.getElementById('results');
+  var cat = '全部';
+
+  function apply(){
+    var kw = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(el){
+      var okCat = (cat === '全部') || (el.getAttribute('data-cat') === cat);
+      var hay = (el.getAttribute('data-key') + ' ' + el.textContent).toLowerCase();
+      var okKw = !kw || hay.indexOf(kw) > -1;
+      var show = okCat && okKw;
+      el.style.display = show ? '' : 'none';
+      if(show) shown++;
+    });
+    var empty = results.querySelector('.empty');
+    if(shown === 0){
+      if(!empty){
+        empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = '没有匹配的条目，试试更短的关键词。';
+        results.appendChild(empty);
+      }
+    }else if(empty){
+      empty.remove();
+    }
+  }
+
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      chips.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      cat = btn.getAttribute('data-cat');
+      apply();
+    });
+  });
+  input.addEventListener('input', apply);
+})();
+</script>
+</body>
+  </html>
