@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寸止挑战在线-寸止挑战在线小游戏_在线挑战入口</title>
+<meta name="description" content="寸止挑战在线是一个可直接在浏览器中开始的反应力挑战小游戏合集。页面提供挑战入口、玩法规则、难度分层与常见问题，帮助你在几秒内理解节奏并开始自己的寸止挑战在线体验。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111827'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23f59e0b' stroke-width='4'/%3E%3Cpath d='M32 14v36' stroke='%23f59e0b' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#111827;
+    --ink-soft:#3f4a5a;
+    --muted:#6b7686;
+    --line:#e3e7ee;
+    --bg:#f7f8fb;
+    --card:#ffffff;
+    --brand:#e2571f;
+    --brand-deep:#b83f12;
+    --brand-tint:#fdf0e9;
+    --accent:#1f4fd8;
+    --accent-tint:#eef2ff;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(17,24,39,.05),0 8px 24px -12px rgba(17,24,39,.16);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.75;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:min(1120px,100% - 40px);margin-inline:auto;}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    padding:.75em 1.4em;border-radius:999px;
+    font-weight:600;font-size:.95rem;line-height:1.2;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .15s ease,background .15s ease,border-color .15s ease;
+  }
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 16px -6px rgba(226,87,31,.65);}
+  .btn-primary:hover{background:var(--brand-deep);transform:translateY(-1px);}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:#c7cedb;}
+  .btn[aria-disabled="true"]{opacity:.55;box-shadow:none;}
+
+  /* ---------- header ---------- */
+  .site-head{
+    position:sticky;top:0;z-index:20;
+    background:rgba(247,248,251,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .head-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 0;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+  .brand-mark{width:36px;height:36px;flex:none;}
+  .brand-text{
+    font-size:1.02rem;font-weight:800;letter-spacing:.2px;color:var(--ink);
+    white-space:nowrap;
+  }
+  .nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap;}
+  .nav a{
+    padding:8px 12px;border-radius:10px;font-size:.92rem;color:var(--ink-soft);
+  }
+  .nav a:hover{background:#eef1f6;color:var(--ink);}
+  .nav .nav-cta{
+    background:var(--ink);color:#fff;margin-left:6px;font-weight:600;
+  }
+  .nav .nav-cta:hover{background:#000;color:#fff;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:48px 0 40px;
+    background:
+      radial-gradient(900px 380px at 88% -10%,var(--brand-tint),transparent 70%),
+      radial-gradient(700px 320px at 0% 0%,var(--accent-tint),transparent 65%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:44px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;font-weight:700;letter-spacing:.08em;
+    color:var(--brand-deep);background:#fff;
+    border:1px solid #f3d6c7;border-radius:999px;padding:5px 12px;
+    margin-bottom:16px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);}
+  h1{
+    font-size:clamp(1.9rem,4.4vw,3rem);
+    line-height:1.22;font-weight:850;letter-spacing:-.5px;
+    margin:0 0 16px;
+  }
+  .hero-lead{
+    font-size:1.02rem;color:var(--ink-soft);max-width:44ch;margin:0 0 24px;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .hero-meta{
+    display:flex;gap:22px;flex-wrap:wrap;
+    margin-top:26px;padding-top:20px;border-top:1px dashed #d8dee9;
+  }
+  .hero-meta div{font-size:.85rem;color:var(--muted);}
+  .hero-meta strong{display:block;font-size:1.15rem;color:var(--ink);font-weight:800;}
+
+  /* dial card */
+  .dial-card{
+    background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:22px;box-shadow:var(--shadow);
+  }
+  .dial-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:.8rem;color:var(--muted);margin-bottom:6px;
+  }
+  .dial-value{
+    font-size:2.4rem;font-weight:850;letter-spacing:-1px;color:var(--brand-deep);
+    font-variant-numeric:tabular-nums;line-height:1.1;
+  }
+  .dial-note{font-size:.82rem;color:var(--muted);margin-top:4px;}
+  .meter{
+    margin-top:16px;height:10px;border-radius:99px;background:#eef1f6;overflow:hidden;
+  }
+  .meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,#f7a072,var(--brand));border-radius:99px;transition:width .18s ease;}
+  .dial-card .btn{width:100%;justify-content:center;margin-top:16px;}
+  .dial-tip{font-size:.76rem;color:var(--muted);text-align:center;margin:10px 0 0;}
+
+  /* ---------- generic section ---------- */
+  section{padding:56px 0;}
+  .sec-head{max-width:62ch;margin-bottom:28px;}
+  .sec-kicker{
+    font-size:.78rem;font-weight:800;letter-spacing:.14em;color:var(--brand-deep);
+    text-transform:uppercase;margin:0 0 8px;
+  }
+  h2{font-size:clamp(1.35rem,2.6vw,1.7rem);line-height:1.35;margin:0 0 10px;font-weight:800;letter-spacing:-.3px;}
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:.96rem;}
+
+  /* cards */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:var(--shadow);
+  }
+  .card h3{font-size:1.04rem;margin:12px 0 8px;font-weight:800;}
+  .card p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+  .icon-box{
+    width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+    background:var(--brand-tint);color:var(--brand-deep);
+  }
+  .icon-box.blue{background:var(--accent-tint);color:var(--accent);}
+
+  /* mode list */
+  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .mode{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .mode-art{height:104px;position:relative;background:#fbf6f1;}
+  .mode-art svg{position:absolute;inset:0;width:100%;height:100%;}
+  .mode-body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1;}
+  .mode-body h3{margin:0 0 6px;font-size:1.02rem;font-weight:800;}
+  .mode-body p{margin:0 0 14px;font-size:.9rem;color:var(--ink-soft);flex:1;}
+  .tag{
+    display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.04em;
+    padding:3px 9px;border-radius:99px;background:#f1f4f9;color:var(--muted);
+    margin-bottom:10px;
+  }
+  .tag.hot{background:var(--brand-tint);color:var(--brand-deep);}
+
+  /* rules */
+  .rules-layout{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+  .steps li{
+    position:relative;padding:0 0 22px 52px;counter-increment:step;
+    border-left:2px solid #e6eaf1;margin-left:16px;
+  }
+  .steps li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .steps li::before{
+    content:counter(step);position:absolute;left:-17px;top:-2px;
+    width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+    background:#fff;border:2px solid var(--brand);color:var(--brand-deep);
+    font-size:.85rem;font-weight:800;
+  }
+  .steps h3{margin:0 0 4px;font-size:1rem;font-weight:800;}
+  .steps p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+  .note-panel{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:var(--shadow);
+  }
+  .note-panel h3{margin:0 0 12px;font-size:1rem;font-weight:800;}
+  .note-panel ul{margin:0;padding-left:18px;font-size:.92rem;color:var(--ink-soft);}
+  .note-panel li{margin-bottom:8px;}
+
+  /* faq */
+  .faq{display:grid;gap:12px;}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 20px;
+  }
+  details[open]{border-color:#d5dce8;}
+  summary{
+    cursor:pointer;font-weight:700;font-size:.96rem;list-style:none;
+    display:flex;justify-content:space-between;gap:16px;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"+";color:var(--brand);font-weight:800;font-size:1.1rem;line-height:1;}
+  details[open] summary::after{content:"–";}
+  details p{margin:10px 0 0;font-size:.92rem;color:var(--ink-soft);}
+
+  /* closing */
+  .closing{
+    background:var(--ink);color:#e9edf4;border-radius:22px;
+    padding:40px;display:flex;flex-wrap:wrap;gap:24px;
+    justify-content:space-between;align-items:center;
+  }
+  .closing h2{color:#fff;margin:0 0 8px;}
+  .closing p{margin:0;color:#b3bdcc;font-size:.94rem;max-width:52ch;}
+  .closing .btn-primary{flex:none;}
+
+  /* footer */
+  footer{
+    border-top:1px solid var(--line);background:#fff;
+    padding:32px 0 40px;margin-top:8px;
+  }
+  .foot-inner{
+    display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
+    font-size:.85rem;color:var(--muted);
+  }
+  .foot-brand{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--ink);}
+  .foot-brand svg{width:26px;height:26px;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--brand-deep);}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;}
+    .grid-3,.modes{grid-template-columns:1fr 1fr;}
+    .rules-layout{grid-template-columns:1fr;gap:26px;}
+  }
+  @media (max-width:640px){
+    .wrap{width:calc(100% - 32px);}
+    .head-inner{flex-wrap:wrap;gap:8px;padding:10px 0;}
+    .nav{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;}
+    .nav a{white-space:nowrap;padding:7px 10px;font-size:.86rem;}
+    .nav .nav-cta{margin-left:0;}
+    .hero{padding:30px 0 32px;}
+    .hero-meta{gap:16px;}
+    section{padding:38px 0;}
+    .grid-3,.grid-2,.modes{grid-template-columns:1fr;}
+    .closing{padding:26px;border-radius:16px;}
+    .closing .btn-primary{width:100%;justify-content:center;}
+    .foot-inner{flex-direction:column;align-items:flex-start;gap:14px;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="寸止挑战在线 首页">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="15" fill="#111827"/>
+        <circle cx="32" cy="32" r="19" fill="none" stroke="#f59e0b" stroke-width="4"/>
+        <path d="M32 13v38" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="5" fill="#e2571f"/>
+      </svg>
+      <span class="brand-text">寸止挑战在线</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#play">开始挑战</a>
+      <a href="#modes">挑战模式</a>
+      <a href="#rules">玩法规则</a>
+      <a href="#faq">常见问题</a>
+      <a class="nav-cta" href="#play">立即进入</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>浏览器即开 · 无需安装</span>
+        <h1>寸止挑战在线</h1>
+        <p class="hero-lead">寸止挑战在线把“临界点控制”做成一个小而快的反应游戏：指针不断逼近边界，你要在恰到好处的一刻按下停止。停得太早分数偏低，越过边界则本轮结束。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#play">进入挑战区</a>
+          <a class="btn btn-ghost" href="#rules">先看玩法规则</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>3 档</strong>难度分层</div>
+          <div><strong>3 种</strong>挑战模式</div>
+          <div><strong>单轮 1–3 秒</strong>节奏</div>
+        </div>
+      </div>
+
+      <div class="dial-card" id="dialCard">
+        <div class="dial-head"><span>临界值</span><span id="dialBest">最佳 0.0</span></div>
+        <div class="dial-value" id="dialValue">0.0</div>
+        <div class="dial-note" id="dialNote">按下方按钮开始，指针会持续靠近边界。</div>
+        <div class="meter" aria-hidden="true"><span id="meterFill"></span></div>
+        <button class="btn btn-primary" id="dialBtn" type="button">开始寸止挑战在线</button>
+        <p class="dial-tip">本卡片为节奏体验演示，完整模式见下方挑战区。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 挑战区 / play -->
+  <section id="play">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Challenge Area</p>
+        <h2>开始你的寸止挑战在线体验</h2>
+        <p>选择模式后进入对应挑战区。所有挑战都在当前页面运行，分数只保存在本机浏览器中，刷新后回到初始状态。</p>
+      </div>
+      <div class="modes">
+        <article class="mode">
+          <div class="mode-art" aria-hidden="true">
+            <svg viewBox="0 0 320 104" preserveAspectRatio="none">
+              <rect width="320" height="104" fill="#fdf0e9"/>
+              <path d="M20 84 L110 30 L200 62 L300 18" fill="none" stroke="#e2571f" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="300" cy="18" r="6" fill="#b83f12"/>
+              <line x1="20" y1="90" x2="300" y2="90" stroke="#f0cdba" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="mode-body">
+            <span class="tag hot">入门</span>
+            <h3>单次定格</h3>
+            <p>指针匀速靠近边界，只能停一次。适合刚接触寸止挑战在线的玩家，用三轮熟悉手感。</p>
+            <a class="btn btn-ghost" href="#rules">了解判定</a>
+          </div>
+        </article>
+        <article class="mode">
+          <div class="mode-art" aria-hidden="true">
+            <svg viewBox="0 0 320 104" preserveAspectRatio="none">
+              <rect width="320" height="104" fill="#eef2ff"/>
+              <circle cx="160" cy="52" r="34" fill="none" stroke="#1f4fd8" stroke-width="3" opacity=".5"/>
+              <circle cx="160" cy="52" r="20" fill="none" stroke="#1f4fd8" stroke-width="3"/>
+              <path d="M160 32v-14M160 86v-14M140 52h-14M194 52h-14" stroke="#1f4fd8" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="mode-body">
+            <span class="tag">进阶</span>
+            <h3>连续收紧</h3>
+            <p>每轮边界向内收一档，停点要求更精确。连续挑战中，节奏判断比单次更难保持。</p>
+            <a class="btn btn-ghost" href="#rules">了解判定</a>
+          </div>
+        </article>
+        <article class="mode">
+          <div class="mode-art" aria-hidden="true">
+            <svg viewBox="0 0 320 104" preserveAspectRatio="none">
+              <rect width="320" height="104" fill="#f1f4f9"/>
+              <rect x="34" y="24" width="52" height="56" rx="6" fill="#c7d2e4"/>
+              <rect x="134" y="24" width="52" height="56" rx="6" fill="#a9b8d0"/>
+              <rect x="234" y="24" width="52" height="56" rx="6" fill="#8c9db9"/>
+            </svg>
+          </div>
+          <div class="mode-body">
+            <span class="tag">随机</span>
+            <h3>变速盲停</h3>
+            <p>指针速度每轮变化，看不到剩余距离提示。适合已经熟悉寸止挑战在线、想练临场判断的玩家。</p>
+            <a class="btn btn-ghost" href="#rules">了解判定</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 为什么 / cards -->
+  <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Why It Works</p>
+        <h2>寸止挑战在线为什么让人想再来一次</h2>
+        <p>短回合、清晰反馈和可对比的分数，是这类临界控制游戏反复被打开的三个原因。</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>一轮只要几秒</h3>
+          <p>单轮从开始到判定通常在 1–3 秒内完成，空隙时间短，适合在碎片时间里连续玩几轮。</p>
+        </div>
+        <div class="card">
+          <div class="icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 18l5-6 4 3 7-9"/><path d="M4 20h16"/></svg>
+          </div>
+          <h3>反馈直接可读</h3>
+          <p>停止后立刻给出本次偏移量与评级，你能清楚知道是停早了还是停晚了，而不是一个模糊的结果。</p>
+        </div>
+        <div class="card">
+          <div class="icon-box" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.3l6.1-.7z"/></svg>
+          </div>
+          <h3>分数可横向比较</h3>
+          <p>同一模式下的偏移量口径一致，便于记录自己的最好成绩，也便于和朋友在同一规则下比一比。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 规则 -->
+  <section id="rules">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">How To Play</p>
+        <h2>寸止挑战在线的玩法与判定</h2>
+        <p>规则本身很简单，难点在于“刚好停在边界内”这一下的判断。下面四步覆盖一次完整挑战。</p>
+      </div>
+      <div class="rules-layout">
+        <ol class="steps">
+          <li>
+            <h3>选模式与难度</h3>
+            <p>从单次定格、连续收紧、变速盲停中选择一种，再决定入门或进阶难度。难度只影响边界收窄速度与指针速度。</p>
+          </li>
+          <li>
+            <h3>观察指针靠近</h3>
+            <p>开始后指针朝边界移动，你可使用按钮或空格键停止。部分模式下会隐藏剩余距离，需要靠节奏感判断。</p>
+          </li>
+          <li>
+            <h3>在边界前停下</h3>
+            <p>停在边界内即得分，越接近边界分数越高；越过边界则本轮结束，不记录分数。</p>
+          </li>
+          <li>
+            <h3>查看偏移与评级</h3>
+            <p>每轮结束显示本次偏移量与评级，并保留本机最好成绩，方便下一轮直接对照。</p>
+          </li>
+        </ol>
+        <aside class="note-panel">
+          <h3>提升稳定性的三个细节</h3>
+          <ul>
+            <li>先用入门难度跑满十轮，记住自己在偏移量上的常见倾向。</li>
+            <li>手指提前放在停止键上，避免临场移动造成的延迟。</li>
+            <li>连续失败时先降低速度，把注意力放回指针与边界的距离上。</li>
+          </ul>
+          <p style="margin:16px 0 0;font-size:.86rem;color:var(--muted);">以上为玩法说明，实际判定以页面内挑战区运行结果为准。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">FAQ</p>
+        <h2>关于寸止挑战在线的常见问题</h2>
+        <p>访问者最常问的四件事，集中在是否需要安装、分数如何保存和难度差异上。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>寸止挑战在线需要下载或注册吗？</summary>
+          <p>不需要。页面在浏览器中直接打开即可开始挑战，不要求注册账号，也不要求安装客户端。若页面后续提供可下载内容，下载入口会单独标注。</p>
+        </details>
+        <details>
+          <summary>分数会保存在服务器上吗？</summary>
+          <p>不会。当前版本的最好成绩只保存在本机浏览器中，清除浏览器数据或更换设备后不会同步，属于本地记录。</p>
+        </details>
+        <details>
+          <summary>三个模式的难度差别在哪？</summary>
+          <p>差别主要在边界收窄幅度和指针速度。单次定格节奏最稳定，连续收紧每轮更难，变速盲停隐藏了距离提示，对节奏判断要求最高。</p>
+        </details>
+        <details>
+          <summary>手机上可以玩寸止挑战在线吗？</summary>
+          <p>可以。页面按移动端重新排列了导航、挑战卡片与规则说明，手机首屏优先显示标题与开始入口，操作使用触屏按钮完成。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing -->
+  <section style="padding-top:44px;">
+    <div class="wrap">
+      <div class="closing">
+        <div>
+          <h2>准备好停在那一下了吗</h2>
+          <p>从入门难度开始，先跑十轮找手感，再尝试连续收紧。寸止挑战在线的分数只取决于你对临界点的判断，多练几轮就能看到变化。</p>
+        </div>
+        <a class="btn btn-primary" href="#dialCard">回到挑战入口</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="15" fill="#111827"/>
+        <circle cx="32" cy="32" r="19" fill="none" stroke="#f59e0b" stroke-width="4"/>
+        <path d="M32 13v38" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span>寸止挑战在线</span>
+    </div>
+    <nav class="foot-links" aria-label="页尾导航">
+      <a href="#play">挑战区</a>
+      <a href="#modes">挑战模式</a>
+      <a href="#rules">玩法规则</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <p style="margin:0;">浏览器即开的小游戏 · 成绩仅存本机</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var card = document.getElementById('dialCard');
+  if(!card) return;
+  var valueEl = document.getElementById('dialValue');
+  var noteEl = document.getElementById('dialNote');
+  var bestEl = document.getElementById('dialBest');
+  var fillEl = document.getElementById('meterFill');
+  var btn = document.getElementById('dialBtn');
+
+  var running = false, t0 = 0, raf = null, best = 0, duration = 2200, limit = 100;
+
+  function paint(v){
+    valueEl.textContent = v.toFixed(1);
+    fillEl.style.width = Math.min(v, 100) + '%';
+  }
+
+  function stopRound(){
+    running = false;
+    cancelAnimationFrame(raf);
+    var elapsed = performance.now() - t0;
+    var progress = Math.min(elapsed / duration, 1) * limit;
+    paint(progress);
+    if(progress >= limit){
+      noteEl.textContent = '越过边界，本轮结束。再试一次。';
+      btn.textContent = '再挑战一次';
+    }else{
+      var score = Math.max(0, 100 - Math.abs(limit - progress));
+      if(score > best){ best = score; bestEl.textContent = '最佳 ' + score.toFixed(1); }
+      noteEl.textContent = '停在 ' + progress.toFixed(1) + '，本次得分 ' + score.toFixed(1) + '。';
+      btn.textContent = '再来一轮';
+    }
+  }
+
+  function tick(){
+    if(!running) return;
+    var elapsed = performance.now() - t0;
+    var progress = Math.min(elapsed / duration, 1) * limit;
+    paint(progress);
+    if(progress >= limit){ stopRound(); return; }
+    raf = requestAnimationFrame(tick);
+  }
+
+  function start(){
+    if(running){ stopRound(); return; }
+    running = true;
+    t0 = performance.now();
+    noteEl.textContent = '指针正在靠近边界，在恰当位置按下停止。';
+    btn.textContent = '停';
+    paint(0);
+    raf = requestAnimationFrame(tick);
+  }
+
+  btn.addEventListener('click', start);
+  document.addEventListener('keydown', function(e){
+    if((e.code === 'Space' || e.key === ' ') && running){
+      e.preventDefault();
+      stopRound();
+    }
+  });
+})();
+</script>
+</body>
+  </html>
