@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>51视频学院-视频剪辑教程_拍摄技巧与后期制作课程</title>
+<meta name="description" content="51视频学院汇集视频剪辑教程、拍摄技巧与后期制作课程，为初学者和创作者提供从选题、拍摄到剪辑发布的学习路径，帮助提升短视频与影像作品的完成度。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314182b'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--ink:#14182b;--ink2:#2b3252;--muted:#5d6480;--line:#e4e6f0;
+--paper:#ffffff;--wash:#f6f7fb;--accent:#ffd166;--accent2:#f4a259;--teal:#1f7a6c;
+--radius:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--paper);line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.2px;color:var(--ink)}
+.brand .mark{width:38px;height:38px;border-radius:11px;background:var(--ink);display:grid;place-items:center;flex:0 0 auto}
+.brand .mark svg{width:18px;height:18px}
+.menu{display:flex;gap:26px;font-size:15px;color:var(--ink2)}
+.menu a{padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+.menu a:hover{color:var(--teal);border-color:var(--teal)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;transition:.2s}
+.nav-cta:hover{background:var(--teal)}
+.burger{display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+/* hero */
+.hero{padding:64px 0 56px;background:
+radial-gradient(900px 380px at 88% -10%,rgba(255,209,102,.35),transparent 60%),
+radial-gradient(700px 320px at 0% 110%,rgba(31,122,108,.12),transparent 60%),
+var(--wash)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--teal);background:#e8f4f1;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+h1{font-size:clamp(30px,4.4vw,50px);line-height:1.18;font-weight:800;letter-spacing:-.5px}
+.hero p.lead{margin-top:18px;font-size:16.5px;color:var(--muted);max-width:34em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:12px;font-size:15px;font-weight:700;transition:.2s;border:1px solid transparent}
+.btn-main{background:var(--ink);color:#fff}
+.btn-main:hover{background:var(--teal)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.hero-facts{display:flex;flex-wrap:wrap;gap:30px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
+.fact b{display:block;font-size:24px;font-weight:800;color:var(--ink);line-height:1.3}
+.fact span{font-size:13px;color:var(--muted)}
+/* hero visual */
+.stage{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 24px 60px -30px rgba(20,24,43,.35)}
+.stage .screen{border-radius:14px;background:var(--ink);aspect-ratio:16/10;position:relative;overflow:hidden;display:grid;place-items:center}
+.stage .screen::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 26px)}
+.play{width:58px;height:58px;border-radius:50%;background:var(--accent);display:grid;place-items:center;position:relative;z-index:1;box-shadow:0 0 0 10px rgba(255,209,102,.18)}
+.play svg{width:20px;height:20px;margin-left:3px}
+.timeline{margin-top:14px;display:flex;align-items:center;gap:6px}
+.tl-bar{height:8px;border-radius:4px;background:var(--line);flex:1}
+.tl-bar.on{background:var(--accent2)}
+.tl-bar.mid{background:var(--teal);flex:2.2}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--ink);flex:0 0 auto}
+.stage .tag{position:absolute;right:-10px;top:26px;background:var(--accent);color:var(--ink);font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:8px;transform:rotate(3deg)}
+/* section base */
+section{padding:70px 0}
+.sec-head{max-width:640px;margin-bottom:38px}
+.sec-head .kicker{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--accent2);text-transform:uppercase}
+.sec-head h2{font-size:clamp(23px,3vw,32px);font-weight:800;margin:10px 0 12px;letter-spacing:-.3px}
+.sec-head p{color:var(--muted);font-size:15.5px}
+/* path cards */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;transition:.25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 40px -28px rgba(20,24,43,.35);border-color:#cfd3e4}
+.card .ico{width:44px;height:44px;border-radius:12px;background:var(--wash);display:grid;place-items:center;margin-bottom:16px}
+.card .ico svg{width:22px;height:22px}
+.card h3{font-size:18px;font-weight:800;margin-bottom:9px}
+.card p{font-size:14.5px;color:var(--muted);flex:1}
+.card .meta{margin-top:16px;font-size:13px;font-weight:600;color:var(--teal);display:flex;align-items:center;gap:6px}
+/* lesson list */
+.lessons{background:var(--wash)}
+.list-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start}
+.lesson{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:14px;transition:.2s}
+.lesson:hover{border-color:var(--teal)}
+.lesson .no{font-size:14px;font-weight:800;color:var(--accent2);width:34px}
+.lesson h3{font-size:16px;font-weight:700}
+.lesson p{font-size:13.5px;color:var(--muted);margin-top:3px}
+.lesson .dur{font-size:12.5px;color:var(--muted);background:var(--wash);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.side{background:var(--ink);color:#fff;border-radius:var(--radius);padding:30px 26px;position:sticky;top:90px}
+.side h3{font-size:18px;font-weight:800;margin-bottom:14px}
+.side ul{list-style:none;display:grid;gap:12px;margin:18px 0 24px}
+.side li{font-size:14px;color:#c9cde0;padding-left:20px;position:relative}
+.side li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+.side .btn-main{background:var(--accent);color:var(--ink);width:100%;justify-content:center}
+.side .btn-main:hover{background:#fff}
+/* filters */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink2);font-size:14px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;transition:.2s}
+.chip:hover{border-color:var(--teal);color:var(--teal)}
+.chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-cards .card{min-height:230px}
+.card .lvl{font-size:12px;font-weight:700;color:var(--teal);background:#e8f4f1;padding:4px 10px;border-radius:6px;align-self:flex-start;margin-bottom:14px}
+/* search */
+.search-bar{display:flex;gap:10px;max-width:520px;margin-top:22px}
+.search-bar input{flex:1;border:1px solid var(--line);border-radius:11px;padding:12px 16px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+.search-bar input:focus{outline:2px solid var(--accent2);outline-offset:1px}
+.search-bar button{border:none;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:0 22px;border-radius:11px;cursor:pointer;font-family:inherit;transition:.2s}
+.search-bar button:hover{background:var(--teal)}
+.search-note{font-size:14px;color:var(--muted);margin-top:12px;min-height:22px}
+/* faq */
+.faq{background:var(--wash)}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:14px}
+.faq-item h3{font-size:16.5px;font-weight:800;margin-bottom:8px;color:var(--ink)}
+.faq-item p{font-size:14.5px;color:var(--muted)}
+/* cta band */
+.band{background:var(--ink);color:#fff;border-radius:22px;padding:48px 44px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+.band h2{font-size:clamp(21px,2.6vw,28px);font-weight:800;line-height:1.35;max-width:20em}
+.band p{color:#b9bed4;font-size:14.5px;margin-top:10px;max-width:34em}
+.band .btn-main{background:var(--accent);color:var(--ink)}
+.band .btn-main:hover{background:#fff}
+.band .btn-ghost{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
+.band .btn-ghost:hover{border-color:#fff}
+/* download row */
+.dl{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.dl a[data-download-placeholder]{opacity:.95;cursor:default}
+/* footer */
+footer{background:var(--wash);border-top:1px solid var(--line);padding:48px 0 30px;margin-top:20px}
+.foot{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:36px}
+.foot .brand{font-size:17px;margin-bottom:12px}
+.foot p{font-size:14px;color:var(--muted);max-width:30em}
+.foot h4{font-size:14px;font-weight:800;margin-bottom:14px;color:var(--ink)}
+.foot ul{list-style:none;display:grid;gap:9px}
+.foot li a{font-size:14px;color:var(--muted)}
+.foot li a:hover{color:var(--teal)}
+.copy{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+.hidden{display:none !important}
+@media(max-width:960px){
+.hero-grid{grid-template-columns:1fr;gap:36px}
+.paths,.grid-cards{grid-template-columns:repeat(2,1fr)}
+.list-wrap{grid-template-columns:1fr}
+.side{position:static}
+.foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+.menu{display:none}
+.burger{display:flex}
+.menu.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:14px 4vw 20px;gap:14px}
+.nav-cta{display:none}
+.hero{padding:42px 0 40px}
+section{padding:52px 0}
+.paths,.grid-cards{grid-template-columns:1fr}
+.lesson{grid-template-columns:auto 1fr;gap:12px}
+.lesson .dur{grid-column:2;justify-self:start}
+.band{padding:34px 24px}
+.foot{grid-template-columns:1fr}
+.hero-facts{gap:22px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="51视频学院首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5l11 6.5-11 6.5z" fill="#ffd166"/></svg>
+      </span>
+      51视频学院
+    </a>
+    <nav class="menu" id="menu" aria-label="主导航">
+      <a href="#paths">学习路径</a>
+      <a href="#courses">课程分类</a>
+      <a href="#lessons">精选课表</a>
+      <a href="#search">查找课程</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a class="nav-cta" href="#paths">开始学习</a>
+    <button class="burger" id="burger" aria-label="展开导航" aria-expanded="false" aria-controls="menu"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">拍摄 · 剪辑 · 发布 一体化学习</span>
+        <h1>51视频学院</h1>
+        <p class="lead">51视频学院是一个面向视频创作者的学习站点，把选题、拍摄、剪辑、调色和发布串成可执行的学习路径。无论你是刚拿起手机的新手，还是想补齐镜头语言与后期节奏的进阶者，都能在这里找到对应阶段的课程与练习方向。</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#paths">查看学习路径
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M12 5l7 7-7 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#courses">浏览课程分类</a>
+        </div>
+        <div class="hero-facts">
+          <div class="fact"><b>3</b><span>条分级学习路径</span></div>
+          <div class="fact"><b>6</b><span>个课程方向</span></div>
+          <div class="fact"><b>逐节</b><span>练习与复盘任务</span></div>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <span class="tag">剪辑实操</span>
+        <div class="screen">
+          <span class="play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5l11 6.5-11 6.5z" fill="#14182b"/></svg></span>
+        </div>
+        <div class="timeline">
+          <span class="tl-bar on" style="flex:1.4"></span>
+          <span class="tl-bar mid"></span>
+          <span class="tl-bar on" style="flex:.9"></span>
+          <span class="tl-dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATHS -->
+  <section id="paths">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Learning Path</span>
+        <h2>按阶段选择学习路径</h2>
+        <p>51视频学院把课程按入门、进阶、专项三条线索组织。每条路径都以“先看示范、再动手拍、最后复盘成片”的顺序推进，避免只看不练。</p>
+      </div>
+      <div class="paths">
+        <article class="card">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="13" height="12" rx="2" stroke="#1f7a6c" stroke-width="1.8"/><path d="M16 10l5-3v10l-5-3" stroke="#1f7a6c" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h3>入门：手机拍出干净画面</h3>
+          <p>从构图、曝光、收音三件基础事开始，用一部手机完成稳定的口播与生活记录，先把画面拍清楚，再谈风格。</p>
+          <span class="meta">适合零基础 · 约 12 节</span>
+        </article>
+        <article class="card">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V9M9 18V5M14 18v-7M19 18v-4" stroke="#f4a259" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+          <h3>进阶：剪辑节奏与叙事</h3>
+          <p>学习镜头衔接、卡点、转场取舍与声音层次，理解一条视频的节奏是如何被剪出来的，并完成一支成片练习。</p>
+          <span class="meta">适合有拍摄经验 · 约 16 节</span>
+        </article>
+        <article class="card">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#14182b" stroke-width="1.8"/><path d="M12 7.5v5l3.5 2" stroke="#14182b" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>专项：调色与成片输出</h3>
+          <p>围绕色彩校正、风格化调色与导出参数展开，解决成片发灰、色彩不统一、平台压缩后画质下降等常见问题。</p>
+          <span class="meta">适合进阶创作者 · 约 10 节</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" style="background:var(--wash)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Course Map</span>
+        <h2>课程分类：从拍到剪的六个方向</h2>
+        <p>同一主题下，51视频学院把内容拆成六个可独立学习的模块。可按需求直接进入某一方向，也可按路径顺序完整学习。</p>
+      </div>
+      <div class="toolbar" id="filterBar" role="group" aria-label="课程分类筛选">
+        <button class="chip active" data-filter="all">全部方向</button>
+        <button class="chip" data-filter="shoot">拍摄基础</button>
+        <button class="chip" data-filter="edit">剪辑技法</button>
+        <button class="chip" data-filter="color">调色输出</button>
+        <button class="chip" data-filter="story">脚本叙事</button>
+      </div>
+      <div class="grid-cards" id="courseGrid">
+        <article class="card" data-cat="shoot">
+          <span class="lvl">拍摄基础</span>
+          <h3>设备与参数入门</h3>
+          <p>手机与相机的分辨率、帧率、对焦方式怎么选，什么场景该锁定曝光。把参数设置和真实拍摄需求对应起来。</p>
+        </article>
+        <article class="card" data-cat="shoot">
+          <span class="lvl">拍摄基础</span>
+          <h3>构图与运镜</h3>
+          <p>三分法、对称、引导线在不同题材中的取舍，以及推、拉、摇、移的稳定做法与常见失误的纠正方式。</p>
+        </article>
+        <article class="card" data-cat="edit">
+          <span class="lvl">剪辑技法</span>
+          <h3>剪辑软件工作流</h3>
+          <p>素材整理、粗剪、精剪、字幕与音效的分层操作，建立一套能重复使用的剪辑工程结构，减少返工。</p>
+        </article>
+        <article class="card" data-cat="edit">
+          <span class="lvl">剪辑技法</span>
+          <h3>卡点与转场</h3>
+          <p>音乐节拍与画面切换的配合逻辑，硬切、叠化、遮罩转场分别适合什么内容，避免为炫技而破坏叙事。</p>
+        </article>
+        <article class="card" data-cat="color">
+          <span class="lvl">调色输出</span>
+          <h3>色彩校正与风格化</h3>
+          <p>先校正白平衡与曝光，再统一多机位色彩，最后按题材做风格化处理，并给出常见的过饱和与偏色案例。</p>
+        </article>
+        <article class="card" data-cat="story">
+          <span class="lvl">脚本叙事</span>
+          <h3>选题与脚本结构</h3>
+          <p>从一句话主题到分镜脚本的转化方法，开头三秒如何建立看点，结尾如何收束并引导互动。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section id="lessons" class="lessons">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Syllabus</span>
+        <h2>精选课表：先练哪几节</h2>
+        <p>如果你刚开始接触51视频学院，可以按下面的顺序先完成五节课，形成一条可发布的最小成片流程。</p>
+      </div>
+      <div class="list-wrap">
+        <div>
+          <div class="lesson"><span class="no">01</span><div><h3>一条视频的完整流程图</h3><p>从选题、拍摄到导出发布，先看清全貌再动手。</p></div><span class="dur">约 18 分钟</span></div>
+          <div class="lesson"><span class="no">02</span><div><h3>手机拍摄的曝光与对焦锁定</h3><p>解决画面忽明忽暗、主体跑焦两个高频问题。</p></div><span class="dur">约 22 分钟</span></div>
+          <div class="lesson"><span class="no">03</span><div><h3>口播画面的构图与收音</h3><p>机位高度、留白位置与麦克风摆放的实操示范。</p></div><span class="dur">约 26 分钟</span></div>
+          <div class="lesson"><span class="no">04</span><div><h3>粗剪到精剪的两次整理</h3><p>先把故事讲顺，再把节奏修紧，避免边剪边乱。</p></div><span class="dur">约 32 分钟</span></div>
+          <div class="lesson"><span class="no">05</span><div><h3>导出参数与平台上传</h3><p>分辨率、码率与封面的配合，减少上传后画质损失。</p></div><span class="dur">约 20 分钟</span></div>
+        </div>
+        <aside class="side">
+          <h3>学习建议</h3>
+          <ul>
+            <li>每节课后立刻用自己素材复现一次</li>
+            <li>同一支片子至少回看两遍再改</li>
+            <li>把问题记成清单，按类补课</li>
+          </ul>
+          <a class="btn btn-main" href="#paths">查看完整路径</a>
+          <div class="dl">
+            <a class="btn btn-ghost" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none;border-color:var(--accent);color:#fff">下载课表</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="search">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Find a Course</span>
+        <h2>按关键词查找课程</h2>
+        <p>输入你关心的主题，例如“转场”“曝光”“调色”“脚本”，页面会筛选出对应方向的课程卡片。</p>
+      </div>
+      <form class="search-bar" id="searchForm" role="search">
+        <input type="search" id="searchInput" placeholder="输入课程关键词，如 转场、曝光、调色" aria-label="输入课程关键词">
+        <button type="submit">查找</button>
+      </form>
+      <p class="search-note" id="searchNote" aria-live="polite">当前展示全部 6 个课程方向。</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">FAQ</span>
+        <h2>关于51视频学院的常见问题</h2>
+      </div>
+      <div class="faq-item">
+        <h3>没有剪辑基础，能直接学吗？</h3>
+        <p>可以。入门路径从设备参数、构图和收音讲起，不预设剪辑软件经验。建议先完成精选课表前两节，再进入剪辑模块。</p>
+      </div>
+      <div class="faq-item">
+        <h3>课程只用手机能学完吗？</h3>
+        <p>拍摄与构图内容可用手机完成；剪辑、调色模块会涉及桌面剪辑软件的操作示范，手机端可观看与记录要点，实操建议在电脑上完成。</p>
+      </div>
+      <div class="faq-item">
+        <h3>学完后能做出什么样的作品？</h3>
+        <p>按路径完成练习，可独立完成一支结构完整、声音与色彩统一的短视频。具体成片效果取决于素材质量与练习次数，课程提供方法而非成品模板。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>从一条能发布的小片子开始</h2>
+          <p>51视频学院把学习拆成可完成的小步骤：先拍清楚，再剪顺畅，最后统一色彩与声音。选一条路径，今天就开始第一节。</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-main" href="#lessons">进入精选课表</a>
+          <a class="btn btn-ghost" href="#courses">浏览全部方向</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.5l11 6.5-11 6.5z" fill="#ffd166"/></svg></span>
+          51视频学院
+        </div>
+        <p>51视频学院专注视频拍摄与剪辑的实操学习，用分级路径与可复现的练习任务，帮助创作者把想法做成看得下去的成片。</p>
+      </div>
+      <div>
+        <h4>学习</h4>
+        <ul>
+          <li><a href="#paths">学习路径</a></li>
+          <li><a href="#lessons">精选课表</a></li>
+          <li><a href="#courses">课程分类</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>支持</h4>
+        <ul>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#search">查找课程</a></li>
+          <li><a href="#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2024 51视频学院 · 视频学习与练习内容持续更新</span>
+      <span>拍摄 · 剪辑 · 调色 · 叙事</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger');
+  var menu=document.getElementById('menu');
+  if(burger){burger.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });}
+
+  var chips=document.querySelectorAll('#filterBar .chip');
+  var cards=document.querySelectorAll('#courseGrid .card');
+  var note=document.getElementById('searchNote');
+  var activeFilter='all';
+
+  function apply(){
+    var kw=(document.getElementById('searchInput').value||'').trim().toLowerCase();
+    var shown=0;
+    cards.forEach(function(c){
+      var okCat=activeFilter==='all'||c.getAttribute('data-cat')===activeFilter;
+      var okKw=!kw||c.textContent.toLowerCase().indexOf(kw)>-1;
+      var show=okCat&&okKw;
+      c.classList.toggle('hidden',!show);
+      if(show)shown++;
+    });
+    if(!note)return;
+    if(!kw&&activeFilter==='all'){note.textContent='当前展示全部 6 个课程方向。';}
+    else if(shown===0){note.textContent='没有匹配的课程，试试“转场”“曝光”“调色”等关键词。';}
+    else{note.textContent='共找到 '+shown+' 个相关课程方向。';}
+  }
+
+  chips.forEach(function(b){
+    b.addEventListener('click',function(){
+      chips.forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      activeFilter=b.getAttribute('data-filter');
+      apply();
+    });
+  });
+
+  var form=document.getElementById('searchForm');
+  if(form){form.addEventListener('submit',function(e){e.preventDefault();apply();});}
+  var input=document.getElementById('searchInput');
+  if(input){input.addEventListener('input',apply);}
+})();
+</script>
+</body>
+</html>
